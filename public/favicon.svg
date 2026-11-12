@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Scriptastic">
+  <rect width="32" height="32" rx="6" fill="#07080b"/>
+  <circle cx="16" cy="16" r="8.6" fill="none" stroke="#e4b15a" stroke-width="2.35"/>
+  <circle cx="16" cy="16" r="3.35" fill="#e4b15a"/>
+</svg>

@@ -1,0 +1,211 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0c0b0a;
+  --color-raised: #161412;
+  --color-inset: #100f0d;
+  --color-line: rgb(243 239 230 / 0.12);
+  --color-line-strong: rgb(243 239 230 / 0.22);
+  --color-fg: #f3efe6;
+  --color-muted: #a39c90;
+  --color-faint: #6f685e;
+  --color-accent: #f3efe6;
+  --color-accent-fg: #141210;
+  --color-mark: rgb(243 239 230 / 0.16);
+  --font-sans: "Source Sans 3", "Segoe UI", sans-serif;
+  --font-serif: "Source Serif 4", Georgia, "Palatino Linotype", serif;
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+}
+
+[data-theme="parchment"] {
+  --color-bg: #f3ecdf;
+  --color-raised: #fffaf2;
+  --color-inset: #e7dece;
+  --color-line: rgb(36 28 20 / 0.12);
+  --color-line-strong: rgb(36 28 20 / 0.24);
+  --color-fg: #241c14;
+  --color-muted: #6b5c4c;
+  --color-faint: #8d7b68;
+  --color-accent: #241c14;
+  --color-accent-fg: #f7f1e6;
+  --color-mark: rgb(36 28 20 / 0.14);
+}
+
+[data-theme="vespers"] {
+  --color-bg: #10141c;
+  --color-raised: #171c28;
+  --color-inset: #0c1018;
+  --color-line: rgb(230 233 240 / 0.12);
+  --color-line-strong: rgb(230 233 240 / 0.24);
+  --color-fg: #e6e9f0;
+  --color-muted: #9aa3b5;
+  --color-faint: #6d7688;
+  --color-accent: #e6e9f0;
+  --color-accent-fg: #12161e;
+  --color-mark: rgb(230 233 240 / 0.16);
+}
+
+[data-theme="cedar"] {
+  --color-bg: #1a1410;
+  --color-raised: #261c16;
+  --color-inset: #120e0b;
+  --color-line: rgb(240 226 208 / 0.14);
+  --color-line-strong: rgb(240 226 208 / 0.26);
+  --color-fg: #f0e2d0;
+  --color-muted: #b59a80;
+  --color-faint: #7d6856;
+  --color-accent: #f0e2d0;
+  --color-accent-fg: #1a1410;
+  --color-mark: rgb(240 226 208 / 0.18);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: var(--color-bg);
+    color: var(--color-fg);
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-fg);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: var(--color-mark);
+    color: var(--color-fg);
+  }
+
+  mark {
+    background: var(--color-mark);
+    color: inherit;
+    border-radius: 2px;
+  }
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(1px 1px at 7% 14%, color-mix(in srgb, var(--color-fg) 55%, transparent) 50%, transparent 52%),
+    radial-gradient(1px 1px at 18% 42%, color-mix(in srgb, var(--color-fg) 28%, transparent) 50%, transparent 52%),
+    radial-gradient(1px 1px at 31% 22%, color-mix(in srgb, var(--color-fg) 40%, transparent) 50%, transparent 52%),
+    radial-gradient(1px 1px at 46% 68%, color-mix(in srgb, var(--color-fg) 22%, transparent) 50%, transparent 52%),
+    radial-gradient(1px 1px at 62% 16%, color-mix(in srgb, var(--color-fg) 35%, transparent) 50%, transparent 52%),
+    radial-gradient(1px 1px at 74% 48%, color-mix(in srgb, var(--color-fg) 20%, transparent) 50%, transparent 52%),
+    radial-gradient(1px 1px at 86% 28%, color-mix(in srgb, var(--color-fg) 38%, transparent) 50%, transparent 52%),
+    radial-gradient(1px 1px at 93% 72%, color-mix(in srgb, var(--color-fg) 24%, transparent) 50%, transparent 52%),
+    radial-gradient(1.5px 1.5px at 24% 78%, color-mix(in srgb, var(--color-fg) 30%, transparent) 50%, transparent 52%),
+    radial-gradient(ellipse 42% 28% at 0% 0%, color-mix(in srgb, var(--color-fg) 7%, transparent), transparent 70%);
+}
+
+.orbits {
+  color: color-mix(in srgb, var(--color-fg) 16%, transparent);
+}
+
+.scripture {
+  font-family: var(--font-serif);
+  font-size: var(--scripture-size, 1.3125rem);
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+[data-type-scale="1"] {
+  --scripture-size: 1rem;
+}
+
+[data-type-scale="2"] {
+  --scripture-size: 1.3125rem;
+}
+
+[data-type-scale="3"] {
+  --scripture-size: 1.7rem;
+}
+
+.scroller {
+  scrollbar-width: none;
+}
+
+.identity-chip {
+  color: var(--color-fg);
+}
+
+.identity-chip img,
+.identity-chip span.rounded-full {
+  width: 1.75rem;
+  height: 1.75rem;
+  background: var(--color-bg);
+  color: var(--color-fg);
+  border: 1px solid var(--color-line);
+}
+
+.identity-chip span.font-medium {
+  max-width: 9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.identity-chip button {
+  min-height: 2.75rem;
+  color: var(--color-muted);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.field span {
+  font-size: 0.875rem;
+  color: var(--color-muted);
+}
+
+.field input,
+.field select {
+  height: 3rem;
+  width: 100%;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-line-strong);
+  background: var(--color-inset);
+  padding-inline: 0.75rem;
+  font-size: 1rem;
+  color: var(--color-fg);
+}
+
+.field input::placeholder {
+  color: var(--color-faint);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
